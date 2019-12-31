@@ -13,16 +13,15 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author ak
+ * @author nipostadmin
  */
-public class FXMLExample extends Application {
+public class CaptureByFX extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         
-        Scene scene = new Scene(root,800,800);
-        stage.setTitle("Capturing Automated 1.0");
+        Scene scene = new Scene(root);
         
         stage.setScene(scene);
         stage.show();

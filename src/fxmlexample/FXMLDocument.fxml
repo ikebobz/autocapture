@@ -69,6 +69,8 @@ GridPane.columnIndex = "1" GridPane.rowIndex = "7" onAction = "#onEnter"/>
 GridPane.columnIndex = "0" GridPane.rowIndex = "9" style="-fx-font-weight: bold"/>
        <RadioButton text="Click to upload tracking numbers from excel file"  fx:id="f1"
        GridPane.columnIndex = "0" GridPane.rowIndex = "10"/>
+       <RadioButton text="Click to register for unsuccessful delivery attempt only"  fx:id="f2"
+       GridPane.columnIndex = "1" GridPane.rowIndex = "10"/>
         <Label text = "Please select file containing tracking numbers" 
 GridPane.columnIndex = "0" GridPane.rowIndex = "11"/>
          <Button text = "Select File" 
@@ -82,6 +84,8 @@ GridPane.columnIndex = "1" GridPane.rowIndex = "13"/>
 <HBox GridPane.columnIndex = "1" GridPane.rowIndex = "14" spacing = "15">
           <Button text = "Process"  onAction = "#processClicked"/>
          <Button text = "Reset"  onAction = "#resetClicked"/>
+         <Button text = "Reload Queue"  onAction = "#reloadClicked"/>
+         <Button text = "Clear buffer"  onAction = "#recBufClicked"/>
 </HBox>
          <Label text = "User Credentials." 
 GridPane.columnIndex = "0" GridPane.rowIndex = "16"/>

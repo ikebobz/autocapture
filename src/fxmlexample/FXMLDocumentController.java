@@ -45,9 +45,12 @@ public class FXMLDocumentController implements Initializable {
     @FXML TextField pass;
     @FXML TextField txt_trackno;
     @FXML RadioButton f1;
+    @FXML RadioButton f2;
+    boolean secondphase = false;
     
     private String tracknos;
     List<String> regnos = new ArrayList<String>();
+    List<String> buffer = new ArrayList<String>();
     
     @FXML
     private void filePickerClicked(ActionEvent event) {
@@ -71,6 +74,7 @@ public class FXMLDocumentController implements Initializable {
     {
     appout.appendText(txt_trackno.getText()+"\n");
     regnos.add(txt_trackno.getText());
+    buffer.add(txt_trackno.getText());
     txt_trackno.clear();
     txt_recCount.setText(String.valueOf(regnos.size()));
     }
@@ -80,6 +84,24 @@ public class FXMLDocumentController implements Initializable {
     appout.clear();
     txt_recCount.clear();
     if(regnos.size()>0)regnos.clear();
+    }
+    @FXML 
+    public void reloadClicked(ActionEvent event)
+    {
+     regnos.clear();
+     if(!buffer.isEmpty()) 
+     {
+     for(String value:buffer)
+     {
+         appout.appendText(value);
+         regnos.add(value);
+     }
+     }
+    }
+    @FXML 
+    public void recBufClicked(ActionEvent event)
+    {
+     if(!buffer.isEmpty()) buffer.clear();
     }
     @FXML
     private void processClicked(ActionEvent event)
@@ -111,6 +133,7 @@ public class FXMLDocumentController implements Initializable {
      return;
      
      }
+     
       /* if(!isConnected()) 
        {
            appout.appendText("Internet Connectivity Broken");
@@ -120,6 +143,7 @@ public class FXMLDocumentController implements Initializable {
      //new HtmlBrowser().processHandler(tracknos, Integer.parseInt(txt_btchsize.getText()),count);
      HtmlBrowser browser = new HtmlBrowser();
      browser.file=tracknos;
+     if(f2.isSelected()) browser.udaonly = true;
      browser.batchSize=Integer.parseInt(txt_btchsize.getText());
      browser.recCount = count;
      browser.tarea = appout;
