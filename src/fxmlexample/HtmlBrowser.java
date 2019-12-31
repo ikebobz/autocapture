@@ -275,13 +275,14 @@ public class HtmlBrowser {
 	}
         protected void unsuccessful()
         {
-        Platform.runLater(new Runnable(){
+        if(!reachable) return;
+            Platform.runLater(new Runnable(){
                 public void run()
                 {
                 tarea.appendText("REGISTERING FOR UNSUCCESSFUL DELIVERY........\n");
                 }
                });
-        if(!reachable) return;
+        
         int btchsz = batchSize;
         lastStore = 0;
         try
